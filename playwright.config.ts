@@ -45,39 +45,16 @@ export default defineConfig({
   },
 
   projects: [
-    // Setup authentication (if needed)
-    {
-      name: 'setup',
-      testMatch: /.*\.setup\.ts/,
-    },
-
-    // Chromium - Guest (unauthenticated)
-    {
-      name: 'chromium-guest',
-      use: { ...devices['Desktop Chrome'] },
-      testMatch: ['**/auth.spec.ts'],
-    },
-
-    // Chromium - Desktop (authenticated)
+    // Chromium - runs all tests without authentication setup
     {
       name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-        storageState: 'playwright/.auth/user.json',
-      },
-      dependencies: ['setup'],
-      testIgnore: ['**/auth.spec.ts'],
+      use: { ...devices['Desktop Chrome'] },
     },
 
-    // Firefox (authenticated)
+    // Firefox - runs all tests without authentication setup
     {
       name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        storageState: 'playwright/.auth/user.json',
-      },
-      dependencies: ['setup'],
-      testIgnore: ['**/auth.spec.ts'],
+      use: { ...devices['Desktop Firefox'] },
     },
   ],
 

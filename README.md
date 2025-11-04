@@ -83,7 +83,6 @@ job-find-tracking-e2e/
 │   └── workflows/          # CI/CD workflows
 ├── tests/
 │   ├── auth.spec.ts       # Authentication tests
-│   ├── auth.setup.ts      # Authentication setup
 │   └── ...                # Other test files
 ├── playwright.config.ts    # Playwright configuration
 ├── package.json
@@ -321,10 +320,10 @@ You'll need to create a Personal Access Token (PAT) with `repo` scope and add it
 - Check browser versions: `npx playwright --version`
 - Clear Playwright cache: `npx playwright install --force`
 
-**Authentication not working:**
-- Verify credentials in `.env`
-- Check if `playwright/.auth/user.json` exists
-- Run setup tests manually: `npx playwright test --project=setup`
+**Tests not finding elements:**
+- Ensure PRODUCTION_URL is correct in GitHub Secrets
+- Check if application is deployed and accessible
+- Verify test selectors match your application
 
 **Timeout errors:**
 - Increase timeout in `playwright.config.ts`
