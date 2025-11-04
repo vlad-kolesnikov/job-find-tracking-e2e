@@ -42,16 +42,16 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
+          disable_web_page_preview: true
           message: |
             🚀 *E2E Tests Started*
 
-            *Repository:* ${{ github.repository }}
-            *Branch:* ${{ github.ref_name }}
-            *Project:* ${{ matrix.project }}
-            *Trigger:* ${{ github.event_name }}
-            *Commit:* `${{ github.sha }}`
+            *Repository:* `${{ github.repository }}`
+            *Branch:* `${{ github.ref_name }}`
+            *Project:* `${{ matrix.project }}`
+            *Trigger:* `${{ github.event_name }}`
 
-            [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            [View Workflow](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
       - name: Run Playwright tests
         id: playwright
@@ -85,12 +85,13 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
+          disable_web_page_preview: true
           message: |
             ✅ *E2E Tests PASSED*
 
-            *Repository:* ${{ github.repository }}
-            *Branch:* ${{ github.ref_name }}
-            *Project:* ${{ matrix.project }}
+            *Repository:* `${{ github.repository }}`
+            *Branch:* `${{ github.ref_name }}`
+            *Project:* `${{ matrix.project }}`
             *Environment:* Production
 
             All tests completed successfully! 🎉
@@ -104,18 +105,18 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
+          disable_web_page_preview: true
           message: |
             ❌ *E2E Tests FAILED*
 
-            *Repository:* ${{ github.repository }}
-            *Branch:* ${{ github.ref_name }}
-            *Project:* ${{ matrix.project }}
+            *Repository:* `${{ github.repository }}`
+            *Branch:* `${{ github.ref_name }}`
+            *Project:* `${{ matrix.project }}`
             *Environment:* Production
 
-            ⚠️ Some tests failed. Please check the logs.
+            ⚠️ Some tests failed\. Please check the logs\.
 
             [View Failed Tests](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            [Download Report Artifact](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
   summary:
     name: Test Summary
@@ -139,13 +140,14 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           format: markdown
+          disable_web_page_preview: true
           message: |
             📊 *E2E Test Suite Summary*
 
             *Status:* ${{ steps.check.outputs.status == 'success' && '✅ All Passed' || '❌ Some Failed' }}
-            *Repository:* ${{ github.repository }}
-            *Branch:* ${{ github.ref_name }}
-            *Triggered by:* ${{ github.event_name }}
+            *Repository:* `${{ github.repository }}`
+            *Branch:* `${{ github.ref_name }}`
+            *Triggered by:* `${{ github.event_name }}`
 
             *Tested browsers:* Chromium, Firefox
 
