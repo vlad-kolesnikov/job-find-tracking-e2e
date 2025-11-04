@@ -2,11 +2,12 @@ node_modules/
 /test-results/
 /playwright-report/
 /playwright/.cache/
-/playwright/.auth/
+/playwright/.auth/*.json
 *.json
 !package.json
 !package-lock.json
 !tsconfig.json
+!playwright/.auth/.gitkeep
 
 # Environment files
 .env
